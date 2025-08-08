@@ -44,28 +44,9 @@ def user_delete(request, pk):
         return redirect('user_list')
     return render(request, 'user_confirm_delete.html', {'user': user})
 
-def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            
-            try:
-                user = User.objects.get(email=email)
-            except User.DoesNotExist:
-                form.add_error('email', 'User with this email does not exist.')
-                return render(request, 'user_login_form.html', {'form': form})
-    else:
-        form = LoginForm()
-    
-    return render(request, 'user_login_form.html', {'form': form})
-
-
-
 def login_view(request):
     if request.method == "POST":
-        email= request.POST.get("username")
+        email= request.POST.get("email")
         password = request.POST.get("password")
         user = User.objects.get(email=email)
 
