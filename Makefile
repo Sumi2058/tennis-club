@@ -1,5 +1,5 @@
 migration:
-	python3 manage.py makemigrations members	
+	python3 manage.py makemigrations users	
 
 migrate:
 	python3 manage.py migrate
@@ -12,3 +12,7 @@ db:
 
 project:
 	django-admin startproject my_tennis_club
+
+app:
+	python3 manage.py startapp users
+

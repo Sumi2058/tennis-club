@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to GreenCourt{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2 class="fw-bold">Welcome to GreenCourt Tennis Club</h2>
+    <p>Join us for friendly matches, tournaments, and top-class coaching!</p>
+    <a href="{% url 'membership' %}" class="btn btn-success">Become a Member</a>
+</div>
+{% endblock %}
