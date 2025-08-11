@@ -15,9 +15,4 @@ class User(models.Model):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['firstname', 'lastname','dob','gender','password','email']  
-
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['email', 'password'] 
+        fields = ['firstname', 'lastname','dob','gender','password','email','username']  

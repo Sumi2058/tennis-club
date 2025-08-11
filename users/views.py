@@ -1,17 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from users.models import User,UserForm,LoginForm
+from users.models import User,UserForm
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+
+
 
 def user_list(request):
     users = User.objects.all()
     return render(request, 'user_list.html', {'users': users})  
-
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     return render(request, 'user_detail.html', {'user': user})
@@ -44,6 +44,7 @@ def user_delete(request, pk):
         return redirect('user_list')
     return render(request, 'user_confirm_delete.html', {'user': user})
 
+
 def login_view(request):
     if request.method == "POST":
         email= request.POST.get("email")
@@ -58,9 +59,18 @@ def login_view(request):
             messages.error(request, "Invalid username or password.")
     return render(request, "login.html")
 
+def register_view(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+  
+    return render(request, 'register.html')
 
 @login_required
 def logout_view(request):
     logout(request)
     messages.info(request, "You have been logged out.")
     return redirect("login")
+
