@@ -1,5 +1,5 @@
 migration:
-	python3 manage.py makemigrations users	
+	python3 manage.py makemigrations products
 
 migrate:
 	python3 manage.py migrate
@@ -14,5 +14,5 @@ project:
 	django-admin startproject my_tennis_club
 
 app:
-	python3 manage.py startapp users
+	python3 manage.py startapp products
 

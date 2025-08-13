@@ -54,7 +54,7 @@ def login_view(request):
         if user is not None:
             ##login(request, user)
             messages.success(request, f"Welcome back, {user.email}!")
-            return redirect("member_list")  # change to your homepage URL name
+            return redirect("product_list")  # change to your homepage URL name
         else:
             messages.error(request, "Invalid username or password.")
     return render(request, "login.html")
@@ -63,8 +63,8 @@ def register_view(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('user_list')
+            form.save()### It save the data into database
+            return redirect('login')
   
     return render(request, 'register.html')
 
