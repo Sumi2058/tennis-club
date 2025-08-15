@@ -39,3 +39,9 @@ def product_delete(request, pk):
         return redirect('product_create_list')
     return render(request, 'product_delete.html', {'product': product})
 
+
+def home(request):
+    # You can customize this query to fetch only featured products
+    products = Product.objects.all()[:8]  # Show latest 8 products
+    
+    return render(request, 'home.html', {'products': products})
