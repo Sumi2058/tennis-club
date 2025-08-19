@@ -1,5 +1,5 @@
 migration:
-	python3 manage.py makemigrations products
+	python3 manage.py makemigrations orders
 
 migrate:
 	python3 manage.py migrate
@@ -14,5 +14,20 @@ project:
 	django-admin startproject my_tennis_club
 
 app:
-	python3 manage.py startapp products
+	python3 manage.py startapp orders
 
+
+build:
+	docker build -t sumi2058/elitecosmetics:v1.0.0 .
+
+push:
+	docker push sumi2058/elitecosmetics:v1.0.0
+
+docker-run:
+	docker run -p 8000:8000 --name pythonapp -d sumi2058/elitecosmetics:v1.0.0
+
+docker-log:
+	docker logs containername
+
+docker-shell:
+	docker exec -it pythonapp bash
